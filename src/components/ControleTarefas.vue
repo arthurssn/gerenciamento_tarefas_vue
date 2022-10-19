@@ -42,6 +42,7 @@ export default defineComponent({
     components: {
         CronometroTarefa
     },
+    expose: ['iniciar'],
     emits: ['tarefaFinalizada'],
     methods: {
         iniciar(): void {
