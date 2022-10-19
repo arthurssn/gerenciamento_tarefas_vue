@@ -1,24 +1,11 @@
-# gerenciamento_tarefas_vue
-
-## Project setup
+# Gerenciamento de Tarefas 
+Aplicação com finalidade de aplicar os conceitos estudados sobre Vue3 + Typescript, que funciona para gerenciar/cronometrar tempo gasto em tarefas, e logo em seguida listando-as. 
+## Configuração do Projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Para compilar
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
