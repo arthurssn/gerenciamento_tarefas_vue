@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import ITarefa from '@/interfaces/ITarefa';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 import ControleTarefas from './ControleTarefas.vue';
 import ListaTarefas from './ListaTarefas.vue';
 export default defineComponent({
@@ -53,7 +53,7 @@ export default defineComponent({
         },
         reiniciarTarefa(tarefa: ITarefa) {
             this.tarefa = tarefa;
-            ((this.$refs.controleTarefas) as any).iniciar();
+            ((this.$refs.controleTarefas) as typeof ControleTarefas).iniciar();
         }
     },
 })
