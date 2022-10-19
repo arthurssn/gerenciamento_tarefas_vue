@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.conteudo {
+    background-color: var(--bg-primario)
+}
+
+main.modo-escuro {
+    --bg-primario: rgb(79, 77, 77);
+}
+
+
+hr {
+    height: 1px;
+    border: 0;
+    background-color: black;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-input {
+    border-radius: 10px;
+    border: 0;
+    padding: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    color: black;
+}
+
+.form-btn {
+    padding: 10px;
+    background: none;
+    border: 0;
+}
+
+.form-btn:hover {
+    padding: 10px;
+    color: #fff;
+    border: 0;
+}
+
+
+.col-7 {
+    width: 58%;
+    margin-right: 10px;
+}
