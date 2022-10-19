@@ -1,7 +1,9 @@
 <template>
   <main :class="tema">
-    <BarraLateral></BarraLateral>
-    <JanelasTarefa></JanelasTarefa>
+    <div class="conteudo">
+      <BarraLateral @alterarTema="alterarTema"></BarraLateral>
+      <JanelasTarefa></JanelasTarefa>
+    </div>
   </main>
 </template>
 
@@ -18,7 +20,13 @@ export default defineComponent({
   },
   data() {
     return {
-      tema: ''
+      tema: '',
+      modo_escuro: false
+    }
+  },
+  methods: {
+    alterarTema(modo_escuro: boolean) {
+      modo_escuro ? this.tema = 'modo-escuro' : this.tema = ''
     }
   },
 });

@@ -1,9 +1,13 @@
 <template>
     <div class="coluna">
         <h1>Gerenciamento de Tarefas</h1>
-        <img src="../../public/Gerenciamento-de-Tempo.png" alt="Gerenciamento de Tempo" class="img-logo">
-        <button class="btn btn-coluna">
-            Modo escurro
+        <img src="../../public/Gerenciamento-de-Tempo.png" alt="Gerenciamento de Tempo" class="img_logo">
+        <button class="btn btn-coluna" @click="alterarTema">
+            <div>
+                {{txt_btn}}
+                <i class="fas fa-moon" v-if="!modo_escuro"></i>
+                <i class="far fa-moon" v-else></i>
+            </div>
         </button>
     </div>
 </template>
@@ -11,7 +15,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-
+    emits: ['alterarTema'],
+    data() {
+        return {
+            modo_escuro: false,
+        }
+    },
+    methods: {
+        alterarTema() {
+            this.modo_escuro = !this.modo_escuro;
+            this.$emit('alterarTema', this.modo_escuro);
+        }
+    },
+    computed: {
+        txt_btn() {
+            return this.modo_escuro ? 'Modo Claro' : 'Modo Escuro'
+        }
+    }
 })
 </script>
 

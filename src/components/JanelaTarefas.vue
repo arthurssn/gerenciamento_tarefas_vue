@@ -1,16 +1,61 @@
 <template>
     <div class="card">
-        <ControleTarefas></ControleTarefas>
+        <ControleTarefas @tarefaFinalizada="atualizarLista" :p_tarefa="tarefa" ref="controleTarefas"></ControleTarefas>
+        <hr>
+        <div v-if="tarefas.length > 0">
+            <div class="lista-cabecalho">
+                <h3>Lista de Tarefas</h3>
+            </div>
+            <div v-for="(tarefa, index) in tarefas" :key="index">
+                <div class="tarefa-card">
+                    <ListaTarefas :tarefa="tarefa" :index="index" @editarTarefa="atualizarTarefa"
+                              @exlcuirTarefa="excluirTarefa" @iniciarNovamente="reiniciarTarefa">
+                    </ListaTarefas>
+                </div>
+            </div>
+        </div>
+        <div v-else style="text-align: center">
+            <div class="tarefa-card">
+                Nenhuma tarefa concluída
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import ITarefa from '@/interfaces/ITarefa';
+import { defineComponent, PropType } from 'vue';
 import ControleTarefas from './ControleTarefas.vue';
+import ListaTarefas from './ListaTarefas.vue';
 export default defineComponent({
+    data() {
+        return {
+            tarefas: [] as ITarefa[],
+            tarefa: {
+                duracaoEmSegundos: 0,
+                descricao_tarefa: ''
+            } as ITarefa
+        }
+    },
     components: {
         ControleTarefas,
-    }
+        ListaTarefas
+    },
+    methods: {
+        atualizarLista(tarefa: ITarefa) {
+            this.tarefas.unshift(tarefa)
+        },
+        atualizarTarefa(descricao: string, index: number) {
+            this.tarefas[index].descricao_tarefa = descricao;
+        },
+        excluirTarefa(index: number) {
+            this.tarefas.splice(index, 1);
+        },
+        reiniciarTarefa(tarefa: ITarefa) {
+            this.tarefa = tarefa;
+            ((this.$refs.controleTarefas) as any).iniciar();
+        }
+    },
 })
 </script>
 
